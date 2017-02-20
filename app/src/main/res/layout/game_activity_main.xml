@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    android:padding="5dp"
+    tools:context="simplegame.MainActivity">
+
+    <Button
+        android:id="@+id/user1"
+        android:rotation="180"
+        android:text="PLAYER 1"
+        android:textSize="30dp"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image1"
+            android:padding="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:padding="5dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/start_text"
+        android:textSize="100dp"
+        tools:text="3"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/user2"
+        android:text="PLAYER 2"
+        android:textSize="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/start_button"
+        android:text="START"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/user1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="56dp" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:text="EXIT"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/start_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
+
+</RelativeLayout>

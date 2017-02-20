@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MySdaApp</string>
+    <string name="app_name">MySdaApps</string>
+    <string name="draw_app_name">Simple Drawing App</string>
+    <string name="game_app_name">Simple Game App</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="clear_view">wyczyść widok</string>
 </resources>

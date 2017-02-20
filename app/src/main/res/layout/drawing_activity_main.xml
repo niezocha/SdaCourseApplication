@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/draw_app_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <drawingapp.SimpleDrawingView
+        android:id="@+id/drawing_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+<RadioGroup
+    android:id="@+id/radio_group"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/yellow_button"
+        android:text="yellow"
+        android:buttonTint="@color/yellow"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:id="@+id/red_button"
+        android:text="red"
+        android:buttonTint="@color/red"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:id="@+id/blue_button"
+        android:text="bleu"
+        android:buttonTint="@color/blue"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:id="@+id/green_button"
+        android:text="green"
+        android:buttonTint="@color/green"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:id="@+id/black_button"
+        android:text="black"
+        android:buttonTint="@color/black"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RadioGroup>
+
+</RelativeLayout>
