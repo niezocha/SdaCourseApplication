@@ -4,8 +4,9 @@
 
     <item
         android:id="@+id/clear_menu"
+        android:icon="@drawable/clear_img"
         android:title="clear"
-        app:showAsAction="never"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/select_color"
@@ -15,6 +16,11 @@
     <item
         android:id="@+id/save_image"
         android:title="save image"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/drawing_gallery"
+        android:title="drawing gallery"
         app:showAsAction="never"/>
 
 </menu>

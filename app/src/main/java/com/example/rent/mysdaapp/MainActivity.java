@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import gallery.GalleryActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle drawerToggle;
@@ -42,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), simplegame.MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button galleryButton = (Button) findViewById(R.id.gallery_button);
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), GalleryActivity.class);
                 startActivity(intent);
             }
         });
