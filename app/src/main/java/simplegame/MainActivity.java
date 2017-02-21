@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firstImageView = (ImageView) findViewById(R.id.image1);
         secondImageView = (ImageView) findViewById(R.id.image2);
@@ -142,5 +144,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         exitButton.setVisibility(View.VISIBLE);
         countDownTimer.cancel();
         isRuning = false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
