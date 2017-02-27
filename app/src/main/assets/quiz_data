@@ -1,0 +1,116 @@
+{
+  "questionsCount":5,
+  "questions": [
+    {
+      "id": 1,
+      "question": "ile jest 2+2",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "1"
+        },
+        {
+          "isCorrect": false,
+          "text": "2"
+        },
+        {
+          "isCorrect": false,
+          "text": "3"
+        },
+        {
+          "isCorrect": true,
+          "text": "4"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "what does the fox say?",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "meuw"
+        },
+        {
+          "isCorrect": true,
+          "text": "rin din din din"
+        },
+        {
+          "isCorrect": false,
+          "text": "wuf wuf"
+        },
+        {
+          "isCorrect": true,
+          "text": "beee"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "if you like it then....?",
+      "answers": [
+        {
+          "isCorrect": true,
+          "text": "you shoud have put a ring on it"
+        },
+        {
+          "isCorrect": false,
+          "text": "eat it"
+        },
+        {
+          "isCorrect": false,
+          "text": "it is bad for you"
+        },
+        {
+          "isCorrect": true,
+          "text": "something is wrong with you"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "gdzie jest zbyszek",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "w Radomiu"
+        },
+        {
+          "isCorrect": false,
+          "text": "lazienka jest zamknieta"
+        },
+        {
+          "isCorrect": true,
+          "text": "kurwa"
+        },
+        {
+          "isCorrect": true,
+          "text": "u pani, po rozrabialna lekcjach"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "jakie zwierze domowe ma Grazyna",
+      "answers": [
+        {
+          "isCorrect": true,
+          "text": "kota"
+        },
+
+        {
+          "isCorrect": false,
+          "text": "mzczyzne"
+        },
+        {
+          "isCorrect": false,
+          "text": "dwie zlote rybki"
+        },
+        {
+          "isCorrect": false,
+          "text": "chomika"
+        }
+      ]
+    }
+  ]
+}

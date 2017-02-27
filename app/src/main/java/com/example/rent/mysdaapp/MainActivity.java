@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import gallery.GalleryActivity;
+import millionaires.MillionairesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), GalleryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button millionairesButton = (Button) findViewById(R.id.millionaires_button);
+        millionairesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MillionairesActivity.class);
                 startActivity(intent);
             }
         });
