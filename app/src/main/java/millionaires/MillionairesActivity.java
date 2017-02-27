@@ -1,7 +1,11 @@
 package millionaires;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -13,10 +17,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.example.rent.mysdaapp.R;
 import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,24 +30,41 @@ import java.util.List;
 public class MillionairesActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Drawable defBackground;
-
-
-    private List<QuestionsItems> questions = new ArrayList<QuestionsItems>();
+    private static final String INDEX_KEY = "index_key";
+    private int currentIndex;
+    private int questionsAmount;
+    private boolean wasClicked = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.millionairs_layout);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        currentIndex = getIntent().getIntExtra(INDEX_KEY, 0);
+
+
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         ValueAnimator objectAnimator = ObjectAnimator.ofInt(0, 100);
         objectAnimator.setDuration(10000);
+
         objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 progressBar.setProgress((Integer) animation.getAnimatedValue());
             }
         });
+
+        objectAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
+                intent.putExtra(INDEX_KEY, ++currentIndex);
+                startActivity(intent);
+            }
+        });
+        progressBar.setProgress(0);
         objectAnimator.start();
 
         String json = null;
@@ -53,9 +73,12 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
             json = loadJson();
             QuizConatainer quizConatainer = new Gson().fromJson(json, QuizConatainer.class);
 
+            questionsAmount = quizConatainer.getQuestionsCount();
+
             TextView textView = (TextView) findViewById(R.id.text_view);
-            textView.setText(quizConatainer.getQuestions().get(0).getQuestion());
-            QuestionsItems questionsItems = quizConatainer.getQuestions().get(0);
+            QuestionsItems questionsItems = quizConatainer.getQuestions().get(currentIndex);
+            textView.setText(questionsItems.getQuestion());
+
 
             Button answer1button = (Button) findViewById(R.id.answer_1);
             Button answer2button = (Button) findViewById(R.id.answer_2);
@@ -89,27 +112,44 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
     }
 
 
-    private void playMusic(){
+    private void playMusic() {
+
+        String uri = "http://www.kakofonia.pl/PL/PLtele/plum.wav";
+        MediaPlayer player = new MediaPlayer();
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         try {
-            MediaPlayer player = new MediaPlayer();
-            player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            player.setDataSource("http://www.kakofonia.pl/PL/PLtele/plum.wav");
+            player.setDataSource(uri);
             player.prepare();
             player.start();
         } catch (Exception e) {
-            // TODO: handle exception
         }
-
     }
 
     @Override
-    public void onClick(View v) {
-        if((Boolean) v.getTag()){
+    public void onClick(View view) {
 
+        if (!wasClicked) {
+            if ((Boolean) view.getTag()) {
+                Toast.makeText(view.getContext(), "Poprawna odpowiedź", Toast.LENGTH_LONG).show();
+                view.setBackgroundColor(Color.GREEN);
+            } else {
+                Toast.makeText(view.getContext(), "Zła odpowiedź", Toast.LENGTH_LONG).show();
+                view.setBackgroundColor(Color.RED);
+            }
+
+            view.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
+                    intent.putExtra(INDEX_KEY, ++currentIndex);
+                    startActivity(intent);
+                }
+            }, 2000);
+            wasClicked = true;
         }
 
-        playMusic();
     }
 
     private String loadJson() throws IOException {

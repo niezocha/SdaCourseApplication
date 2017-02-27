@@ -39,14 +39,12 @@ public class MainActivity extends AppCompatActivity {
         simpleDrawingView = (SimpleDrawingView) findViewById(R.id.drawing_view);
 
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        radioGroup.setVisibility(View.INVISIBLE);
 
         Button yellowButton = (Button) findViewById(R.id.yellow_button);
         yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 simpleDrawingView.setCurrentColor(ContextCompat.getColor(MainActivity.this, R.color.yellow));
-                radioGroup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleDrawingView.setCurrentColor(ContextCompat.getColor(MainActivity.this, R.color.red));
-                radioGroup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -64,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleDrawingView.setCurrentColor(ContextCompat.getColor(MainActivity.this, R.color.green));
-                radioGroup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -73,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleDrawingView.setCurrentColor(ContextCompat.getColor(MainActivity.this, R.color.blue));
-                radioGroup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -82,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleDrawingView.setCurrentColor(ContextCompat.getColor(MainActivity.this, R.color.black));
-                radioGroup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -102,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.clear_menu){
             simpleDrawingView.clear();
-        }
-        else if(item.getItemId() == R.id.select_color){
-            radioGroup.setVisibility(View.VISIBLE);
         }
         else if (item.getItemId() == R.id.save_image){
             saveDrawingToFile();
