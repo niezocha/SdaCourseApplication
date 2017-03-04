@@ -18,8 +18,10 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.rent.mysdaapp.R;
 import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,9 +33,17 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
 
     private Drawable defBackground;
     private static final String INDEX_KEY = "index_key";
+    protected static final String CORRECT_ANSWERS = "correct_answers";
+    protected static final String INCORRECT_ANSWERS = "incorrect_answers";
+
     private int currentIndex;
     private int questionsAmount;
     private boolean wasClicked = false;
+    private QuizConatainer quizConatainer;
+    private ValueAnimator objectAnimator;
+    private boolean isAnimatorCanceled;
+    private int correctAnswers;
+    private int incorectAnswers;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,10 +53,14 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
 
         currentIndex = getIntent().getIntExtra(INDEX_KEY, 0);
 
+        correctAnswers = getIntent().getIntExtra(CORRECT_ANSWERS, 0);
+        incorectAnswers = getIntent().getIntExtra(INCORRECT_ANSWERS, 0);
+
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        ValueAnimator objectAnimator = ObjectAnimator.ofInt(0, 100);
+        objectAnimator = ObjectAnimator.ofInt(0, 100);
         objectAnimator.setDuration(10000);
+
 
         objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -59,9 +73,14 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
-                intent.putExtra(INDEX_KEY, ++currentIndex);
-                startActivity(intent);
+
+                if (!isAnimatorCanceled) {
+                    Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
+                    intent.putExtra(INDEX_KEY, ++currentIndex);
+                    startActivity(intent);
+                }
+
+                isAnimatorCanceled = true;
             }
         });
         progressBar.setProgress(0);
@@ -71,9 +90,9 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
 
         try {
             json = loadJson();
-            QuizConatainer quizConatainer = new Gson().fromJson(json, QuizConatainer.class);
+            quizConatainer = new Gson().fromJson(json, QuizConatainer.class);
 
-            questionsAmount = quizConatainer.getQuestionsCount();
+//            questionsAmount = quizConatainer.getQuestionsCount();
 
             TextView textView = (TextView) findViewById(R.id.text_view);
             QuestionsItems questionsItems = quizConatainer.getQuestions().get(currentIndex);
@@ -131,9 +150,11 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
 
         if (!wasClicked) {
             if ((Boolean) view.getTag()) {
+                ++correctAnswers;
                 Toast.makeText(view.getContext(), "Poprawna odpowiedź", Toast.LENGTH_LONG).show();
                 view.setBackgroundColor(Color.GREEN);
             } else {
+                ++incorectAnswers;
                 Toast.makeText(view.getContext(), "Zła odpowiedź", Toast.LENGTH_LONG).show();
                 view.setBackgroundColor(Color.RED);
             }
@@ -142,9 +163,21 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
 
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
-                    intent.putExtra(INDEX_KEY, ++currentIndex);
-                    startActivity(intent);
+                    if (currentIndex < quizConatainer.getQuestionsCount() - 1) {
+                        Intent intent = new Intent(MillionairesActivity.this, MillionairesActivity.class);
+                        intent.putExtra(INDEX_KEY, ++currentIndex);
+                        intent.putExtra(CORRECT_ANSWERS, correctAnswers);
+                        intent.putExtra(INCORRECT_ANSWERS, incorectAnswers);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(MillionairesActivity.this, SummaryActivity.class);
+                        intent.putExtra(CORRECT_ANSWERS, correctAnswers);
+                        intent.putExtra(INCORRECT_ANSWERS, incorectAnswers);
+                        startActivity(intent);
+                    }
+                    isAnimatorCanceled = true;
+                    objectAnimator.cancel();
+
                 }
             }, 2000);
             wasClicked = true;

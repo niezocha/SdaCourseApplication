@@ -40,7 +40,7 @@
           "text": "wuf wuf"
         },
         {
-          "isCorrect": true,
+          "isCorrect": false,
           "text": "beee"
         }
       ]
@@ -62,7 +62,7 @@
           "text": "it is bad for you"
         },
         {
-          "isCorrect": true,
+          "isCorrect": false,
           "text": "something is wrong with you"
         }
       ]
@@ -84,7 +84,7 @@
           "text": "kurwa"
         },
         {
-          "isCorrect": true,
+          "isCorrect": false,
           "text": "u pani, po rozrabiał na lekcjach"
         }
       ]

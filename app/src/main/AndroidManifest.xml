@@ -35,6 +35,9 @@
         <activity
             android:name="fortunetale.FortunetaleActivity"
             android:label="Fortunetale"/>
+        <activity
+            android:name="millionaires.SummaryActivity"
+            android:label="Wynik gry"/>
     </application>
 
 </manifest>
