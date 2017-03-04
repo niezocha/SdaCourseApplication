@@ -1,9 +1,8 @@
 package com.example.rent.mysdaapp;
 
 import android.content.Intent;
-import android.os.PersistableBundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +10,9 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import fortunetale.FortunetaleActivity;
+import tablayout.BooksActivity;
 import gallery.GalleryActivity;
 import millionaires.MillionairesActivity;
 
@@ -67,6 +67,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button booksButton = (Button) findViewById(R.id.books_button);
+        booksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), BooksActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button fortuneButton = (Button) findViewById(R.id.fortune_button);
+        fortuneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), FortunetaleActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -80,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case android.R.id.home: {
-                if (drawerLayout.isDrawerOpen(Gravity.START)) {
-                    drawerLayout.closeDrawer(Gravity.START);
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else {
-                    drawerLayout.openDrawer(Gravity.START);
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
                 break;
             }

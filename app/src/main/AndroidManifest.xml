@@ -29,6 +29,12 @@
         <activity
             android:name="millionaires.MillionairesActivity"
             android:label="Millionaires"/>
+        <activity
+            android:name="tablayout.BooksActivity"
+            android:label="Książki"/>
+        <activity
+            android:name="fortunetale.FortunetaleActivity"
+            android:label="Fortunetale"/>
     </application>
 
 </manifest>

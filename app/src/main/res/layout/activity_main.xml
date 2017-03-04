@@ -47,13 +47,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <RadioButton
-                android:id="@+id/flag_button"
-                android:text="Flaga"
-                android:textSize="20dp"
-                android:padding="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/flag_button"-->
+                <!--android:text="Flaga"-->
+                <!--android:textSize="20dp"-->
+                <!--android:padding="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
             <RadioButton
                 android:id="@+id/gallery_button"
@@ -63,25 +63,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <RadioButton
-                android:id="@+id/url_button"
-                android:text="Url"
-                android:textSize="20dp"
-                android:padding="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/url_button"-->
+                <!--android:text="Url"-->
+                <!--android:textSize="20dp"-->
+                <!--android:padding="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
-            <RadioButton
-                android:id="@+id/broadcast_button"
-                android:text="Ładowarka"
-                android:textSize="20dp"
-                android:padding="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/broadcast_button"-->
+                <!--android:text="Ładowarka"-->
+                <!--android:textSize="20dp"-->
+                <!--android:padding="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
             <RadioButton
                 android:id="@+id/millionaires_button"
                 android:text="Milionerzy"
+                android:textSize="20dp"
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/books_button"
+                android:text="Książki"
+                android:textSize="20dp"
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/fortune_button"
+                android:text="Fortunetale"
                 android:textSize="20dp"
                 android:padding="20dp"
                 android:layout_width="wrap_content"
