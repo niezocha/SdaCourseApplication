@@ -38,6 +38,9 @@
         <activity
             android:name="millionaires.SummaryActivity"
             android:label="Wynik gry"/>
+        <activity
+            android:name="mvp.MvpActivity"
+            android:label="MVP"/>
     </application>
 
 </manifest>

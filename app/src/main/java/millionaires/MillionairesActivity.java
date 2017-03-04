@@ -149,6 +149,7 @@ public class MillionairesActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
 
         if (!wasClicked) {
+//            playMusic();
             if ((Boolean) view.getTag()) {
                 ++correctAnswers;
                 Toast.makeText(view.getContext(), "Poprawna odpowiedź", Toast.LENGTH_LONG).show();

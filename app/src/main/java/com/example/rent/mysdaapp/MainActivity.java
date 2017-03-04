@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import fortunetale.FortunetaleActivity;
+import mvp.MvpActivity;
 import tablayout.BooksActivity;
 import gallery.GalleryActivity;
 import millionaires.MillionairesActivity;
@@ -81,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), FortunetaleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button mvpButton = (Button) findViewById(R.id.mvp_button);
+        mvpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MvpActivity.class);
                 startActivity(intent);
             }
         });
